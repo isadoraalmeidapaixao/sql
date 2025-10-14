@@ -1,4 +1,3 @@
-
 -- Table básica de auditoria dos agendamentos
 CREATE TABLE AuditoriaAgendamento(
 	id INT IDENTITY(1,1) PRIMARY KEY,
@@ -6,7 +5,8 @@ CREATE TABLE AuditoriaAgendamento(
 	dataHora DATETIME2 NOT NULL DEFAULT GETDATE() -- GETDATE() pega data e hora atuais
 );
 GO
- 
+
+	
 -- Criação do gatilho para a Auditoria de Agendamento
 CREATE TRIGGER trg_LogNovaHospedagem
 ON Hospedagem -- O trigger é para a tabela Hospedagem
