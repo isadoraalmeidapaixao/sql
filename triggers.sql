@@ -1,4 +1,5 @@
--- Table b·sica de auditoria dos agendamentos
+
+-- Table b√°sica de auditoria dos agendamentos
 CREATE TABLE AuditoriaAgendamento(
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	descricao VARCHAR(500) NOT NULL,
@@ -6,13 +7,13 @@ CREATE TABLE AuditoriaAgendamento(
 );
 GO
  
--- CriaÁ„o do gatilho para a Auditoria de Agendamento
+-- Cria√ß√£o do gatilho para a Auditoria de Agendamento
 CREATE TRIGGER trg_LogNovaHospedagem
-ON Hospedagem -- O trigger È para a tabela Hospedagem
-AFTER INSERT -- Ele ser· disparado depois que uma linha for inserida
+ON Hospedagem -- O trigger √© para a tabela Hospedagem
+AFTER INSERT -- Ele ser√° disparado depois que uma linha for inserida
 AS
 BEGIN
-	-- Vari·veis em SQL: Armazenam dados temporariamente.
+	-- Vari√°veis em SQL: Armazenam dados temporariamente.
 	DECLARE @clienteId INT;
 	DECLARE @chaleId INT;
 	DECLARE @dataInicio DATE;
@@ -30,7 +31,7 @@ BEGIN
 	-- Inserimos o log na tabela de auditoria:
 	INSERT INTO AuditoriaAgendamento (descricao)
 	VALUES (
-		CONCAT('Nova hospedagem agendada para o cliente', @clienteNome, ' no chalÈ ID: ', @chaleId, ' a partir de ', @dataInicio, '.')
+		CONCAT('Nova hospedagem agendada para o cliente', @clienteNome, ' no chal√© ID: ', @chaleId, ' a partir de ', @dataInicio, '.')
 	);
 END
 GO
